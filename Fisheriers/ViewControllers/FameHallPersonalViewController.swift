@@ -119,8 +119,11 @@ class FameHallPersonalViewController: UIViewController, UITableViewDataSource, U
         
         let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath) as! BasicCell
         
+        if(array.count > indexPath.item)
+        {
         let info = array[indexPath.item] as! NSDictionary
         cell.showInfo(info)
+        }
         // Configure the cell...
         
         return cell
@@ -132,7 +135,10 @@ class FameHallPersonalViewController: UIViewController, UITableViewDataSource, U
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
-        cell.showModel(array[indexPath.item] as! NSDictionary)
+        if(array.count > indexPath.item)
+        {
+            cell.showModel(array[indexPath.item] as! NSDictionary)
+        }
         return cell
     }
     

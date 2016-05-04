@@ -65,7 +65,7 @@ class UserViewController: UITableViewController, FSMediaPickerDelegate {
         updateAvatar(img) { () -> () in
             KVNProgress.show()
             //self.avatarView.image = img
-            GetUserInfo({
+            GetUserInfo2({
                 let avatarPath = (userDict.objectForKey("avatar") as? String) ?? ""
                 self.avatarView.resetUserImage(avatarPath){ _ in  KVNProgress.dismiss()}
             })

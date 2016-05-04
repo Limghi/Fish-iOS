@@ -29,6 +29,7 @@ extension UIViewController
         //self.navigationController?.navigationBar.backItem?.rightBarButtonItem = UIBarButtonItem()
     }
     
+    
     func UserIconClicked()
     {
         if token == ""
@@ -39,6 +40,21 @@ extension UIViewController
         {
             self.sideMenuViewController?.presentLeftMenuViewController()
         }
+    }
+    
+    func setLiveButton()
+    {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "button_live01"), landscapeImagePhone: UIImage(named: "button_live01"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.liveButtonClicked))
+        self.navigationController?.navigationBar.tintColor = UIColor.darkGrayColor()
+        //self.navigationController?.navigationBar.backItem?.rightBarButtonItem = UIBarButtonItem()
+    }
+    
+    func liveButtonClicked()
+    {
+        let bundle = NSBundle(URL: NSBundle.mainBundle().URLForResource("LCStreamingBundle" , withExtension: "bundle")!)
+        let vc = CaptureStreamingViewController(nibName: "CaptureStreamingViewController", bundle: bundle, title: nil, activityId: "A20160502000025w", userId: "823100", secretKey: "2e44b05a1d3b751efc6a3a3eb1654e79", orientation: CaptureStreamingViewControllerOrientation.Portrait)
+        presentViewController(vc, animated: true, completion: nil)
+        //navigationController?.pushViewController(vc, animated: true)
     }
 }
 

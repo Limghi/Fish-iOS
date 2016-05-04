@@ -47,6 +47,7 @@ let serverDateFormatter = NSDateFormatter()
 let clientDateFormatter = NSDateFormatter()
 let lcDateDateFormatter = NSDateFormatter()
 let simpleDateFormatter = NSDateFormatter()
+let serverShortDateFormatter = NSDateFormatter()
 
 let lcUUID = "nal4hqaahb"
 var userDict = NSMutableDictionary()
@@ -84,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().backItem?.leftBarButtonItem?.tintColor = ColorOrange
         IQKeyboardManager.sharedManager().enable = true
         
-        
+        serverShortDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         serverDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         clientDateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm"
         lcDateDateFormatter.dateFormat = "yyyyMMddHHmmss"

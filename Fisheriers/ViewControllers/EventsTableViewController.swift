@@ -57,11 +57,11 @@ class EventsTableViewController: MainTabController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath) as! BasicCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
         if dataArray.count > indexPath.row
         {
             let data = dataArray.objectAtIndex(indexPath.item) as! NSDictionary
-            cell.showEvent(data)
+            cell.showModel(data)
         }
 
         // Configure the cell...

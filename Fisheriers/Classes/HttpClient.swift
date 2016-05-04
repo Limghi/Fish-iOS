@@ -44,132 +44,62 @@ func SignIn2(path:String,parameters:NSDictionary,success:(NSDictionary?)->())
 
 }
 
-func SignIn(path:String,parameters:NSDictionary,success:(NSDictionary?)->())
+func GET2(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
 {
-    let manager = AFHTTPSessionManager()
-    
-    
-    KVNProgress.show()
-    manager.POST(path, parameters: parameters, progress: nil,
-        success: { (dataTask, data) -> Void in
-            let dict = data as? NSDictionary
-            token = dict?.objectForKey("access_token") as! String
-            GetUserInfo({()->() in
-                success(dict)
-                KVNProgress.dismiss()
-            })
-            
-        },
-        failure:
-        { (dataTask, error) -> Void in
-            
-            let message = error.userInfo["message"] as? String
-            if message != nil
-            {
-                KVNProgress.showErrorWithStatus(message!)
-            }
-            else
-            {
-                KVNProgress.showError()
-            }
-            
-            NSLog(error.localizedDescription)
-        }
-    )
+    GET2(path,parameters: parameters,success: {(o)-> Void in success(o)},failed:{()-> Void in})
 }
 
-func GET(path:String,parameters:NSDictionary?,success:(AnyObject?)->(),failed:()->())
+
+
+func GET2(path:String,parameters:NSDictionary?,success:(AnyObject?)->(),failed:()->())
 {
-    
-    let manager = AFHTTPSessionManager()
-    manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    
     KVNProgress.show()
-    manager.GET(path, parameters: parameters, progress: nil,
-        success: { (dataTask, data) -> Void in
-            success(data)
-            KVNProgress.dismiss()
-        },
-        failure:
-        { (dataTask, error) -> Void in
-            
-            let message = error.userInfo["message"] as? String
-            if message != nil
+    let headers = ["Authorization":"Bearer \(token)","Content-Type":"application/json"]
+    parameters as? [String:AnyObject]
+    Alamofire.request(.GET, path, parameters:  parameters as? [String:AnyObject], headers: headers)
+        .responseJSON {response in
+            print("\(response.data)")
+            if response.response == nil
             {
-                KVNProgress.showErrorWithStatus(message!)
+                 KVNProgress.dismiss()
+                KVNProgress.showErrorWithStatus("网络无法连接")
+                failed()
+
+                print("\(response.request)")
             }
             else
             {
-                KVNProgress.showError()
+                let state = response.response!.statusCode
+                if state != 200
+                {
+                     KVNProgress.dismiss()
+                    let dict = response.result.value as! NSDictionary
+                    let message = dict.objectForKey("message") as? String ?? ""
+                    KVNProgress.showErrorWithStatus(message)
+                    failed()
+                   
+
+                }
+                else
+                {
+                    let dict = response.result.value
+                    if let json = response.result.value{
+                        print("\(json)")
+                    }
+                    success(dict)
+                    KVNProgress.dismiss()
+                }
             }
-            
-            NSLog(error.localizedDescription)
-            failed()
-        }
-    )
+    }
 }
+
 
 
 func GET(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
 {
-    
-    let manager = AFHTTPSessionManager()
-    manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    
-    KVNProgress.show()
-    manager.GET(path, parameters: parameters, progress: nil,
-        success: { (dataTask, data) -> Void in
-            success(data)
-            KVNProgress.dismiss()
-        },
-        failure:
-        { (dataTask, error) -> Void in
-            
-            let message = error.userInfo["message"] as? String
-            if message != nil
-            {
-                KVNProgress.showErrorWithStatus(message!)
-            }
-            else
-            {
-                KVNProgress.showError()
-            }
-            
-            NSLog(error.localizedDescription)
-        }
-    )
+    GET2(path, parameters: parameters,success:{(object)-> Void in success(object)},failed:{()-> Void in})
 }
 
-func GETRaw(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
-{
-    
-    let manager = AFHTTPSessionManager()
-    manager.responseSerializer = AFHTTPResponseSerializer()
-    manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
-    KVNProgress.show()
-    manager.GET(path, parameters: parameters, progress: nil,
-        success: { (dataTask, data) -> Void in
-            success(data)
-            KVNProgress.dismiss()
-        },
-        failure:
-        { (dataTask, error) -> Void in
-            
-            let message = error.userInfo["message"] as? String
-            if message != nil
-            {
-                KVNProgress.showErrorWithStatus(message!)
-            }
-            else
-            {
-                KVNProgress.showError()
-            }
-            
-            NSLog(error.localizedDescription)
-        }
-    )
-}
 
 func POST2(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
 {
@@ -203,40 +133,9 @@ func POST2(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
 func POST(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
 {
     
-    let manager = AFHTTPSessionManager()
-    manager.requestSerializer = AFJSONRequestSerializer()
-    manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    KVNProgress.show()
-    
-        //manager.requestSerializer.setValue(token, forHTTPHeaderField: "token")
-    manager.POST(path, parameters: parameters, progress: nil,
-        success: { (dataTask, data) -> Void in
-            success(data)
-            KVNProgress.dismiss()
-        },
-        failure:
-        { (dataTask, error) -> Void in
-            let r = dataTask?.response              //let str = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            //NSLog(str as! String)
-            _ = error.userInfo[2] as? NSData
-            //let str = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            //NSLog(str as! String)
-            let message = error.userInfo["message"] as? String
-            
-            if message != nil
-            {
-                    KVNProgress.showErrorWithStatus(message!)
-            }
-            else
-            {
-                KVNProgress.showError()
-            }
-            
-            NSLog(error.localizedDescription)
-        }
-    )
+   POST2(path, parameters: parameters) { (o) in
+    success(o)
+    }
 }
 
 func updateAvatar(avatar : UIImage, success: ()->())
@@ -273,7 +172,7 @@ func GetUserInfo2(success:()->())
     let path = domain+"api/Account/UserDetail"
     KVNProgress.show()
     let headers = ["Authorization":"Bearer \(token)","Content-Type":"application/json"]
-    Alamofire.request(.POST, path, parameters: nil , encoding: .JSON, headers: headers)
+    Alamofire.request(.GET, path, parameters: nil , encoding: .JSON, headers: headers)
         .responseJSON { response in
             if response.response == nil
             {
@@ -299,27 +198,162 @@ func GetUserInfo2(success:()->())
     }}
 
 
-func GetUserInfo(success:()->())
+
+func POST3(path:String,parameters:NSDictionary?,success:(AnyObject?)->())
+{
+    
+    let manager = AFHTTPSessionManager()
+    manager.requestSerializer = AFJSONRequestSerializer()
+    manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    KVNProgress.show()
+    
+    //manager.requestSerializer.setValue(token, forHTTPHeaderField: "token")
+    manager.POST(path, parameters: parameters, progress: nil,
+                 success: { (dataTask, data) -> Void in
+                    success(data)
+                    KVNProgress.dismiss()
+        },
+                 failure:
+        { (dataTask, error) -> Void in
+            let r = dataTask?.response              //let str = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            //NSLog(str as! String)
+            _ = error.userInfo[2] as? NSData
+            //let str = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            //NSLog(str as! String)
+            let message = error.userInfo["message"] as? String
+            
+            if message != nil
+            {
+                KVNProgress.showErrorWithStatus(message!)
+            }
+            else
+            {
+                KVNProgress.showError()
+            }
+            
+            NSLog(error.localizedDescription)
+        }
+    )
+}
+
+
+func GET3(path:String,parameters:NSDictionary?,success:(AnyObject?)->(),failed:()->())
+{
+    KVNProgress.show()
+    let headers = ["Authorization":"Bearer \(token)","Content-Type":"application/json"]
+    Alamofire.request(.GET, path, parameters: parameters as? [String:AnyObject] , encoding: .JSON, headers: headers)
+        .responseJSON { response in
+            if response.response == nil
+            {
+                KVNProgress.showErrorWithStatus("网络无法连接")
+            }
+            else
+            {
+                let state = response.response!.statusCode
+                if state != 200
+                {
+                    let dict = response.result.value as! NSDictionary
+                    let message = dict.objectForKey("message") as? String ?? ""
+                    KVNProgress.showErrorWithStatus(message)
+                }
+                else
+                {
+                    let dict = response.result.value as? NSDictionary
+                    success(dict)
+                    KVNProgress.dismiss()
+                }
+            }
+    }
+}
+
+func GET4(path:String,parameters:NSDictionary?,success:(AnyObject?)->(),failed:()->())
+{
+    
+    let manager = AFHTTPSessionManager()
+    manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    
+    KVNProgress.show()
+    manager.GET(path, parameters: parameters, progress: nil,
+                success: { (dataTask, data) -> Void in
+                    success(data)
+                    KVNProgress.dismiss()
+        },
+                failure:
+        { (dataTask, error) -> Void in
+            
+            let message = error.userInfo["message"] as? String
+            if message != nil
+            {
+                KVNProgress.showErrorWithStatus(message!)
+            }
+            else
+            {
+                KVNProgress.showError()
+            }
+            
+            NSLog(error.localizedDescription)
+            failed()
+        }
+    )
+}
+
+func GetUserInfo3(success:()->())
 {
     let manager = AFHTTPSessionManager()
     manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     manager.GET(domain+"api/Account/UserDetail", parameters: nil, progress: nil,
-        success: { (dataTask, data) -> Void in
-            userDict = NSMutableDictionary(dictionary: data as! NSDictionary)
-            success()
+                success: { (dataTask, data) -> Void in
+                    userDict = NSMutableDictionary(dictionary: data as! NSDictionary)
+                    success()
     }){ (dataTask, error) -> Void in}//        { (dataTask, error) -> Void in
-//            
-//            let message = error.userInfo["message"] as? String
-//            if message != nil
-//            {
-//                KVNProgress.showErrorWithStatus(message!)
-//            }
-//            else
-//            {
-//                KVNProgress.showError()
-//            }
-//            
-//            NSLog(error.localizedDescription)
-//        }
+    //
+    //            let message = error.userInfo["message"] as? String
+    //            if message != nil
+    //            {
+    //                KVNProgress.showErrorWithStatus(message!)
+    //            }
+    //            else
+    //            {
+    //                KVNProgress.showError()
+    //            }
+    //
+    //            NSLog(error.localizedDescription)
+    //        }
     
+}
+
+func SignIn3(path:String,parameters:NSDictionary,success:(NSDictionary?)->())
+{
+    let manager = AFHTTPSessionManager()
+    
+    
+    KVNProgress.show()
+    manager.POST(path, parameters: parameters, progress: nil,
+                 success: { (dataTask, data) -> Void in
+                    let dict = data as? NSDictionary
+                    token = dict?.objectForKey("access_token") as! String
+                    GetUserInfo3({()->() in
+                        success(dict)
+                        KVNProgress.dismiss()
+                    })
+                    
+        },
+                 failure:
+        { (dataTask, error) -> Void in
+            
+            let message = error.userInfo["message"] as? String
+            if message != nil
+            {
+                KVNProgress.showErrorWithStatus(message!)
+            }
+            else
+            {
+                KVNProgress.showError()
+            }
+            
+            NSLog(error.localizedDescription)
+        }
+    )
 }

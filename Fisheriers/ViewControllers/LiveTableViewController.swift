@@ -144,6 +144,7 @@ class LiveTableViewController: MainTabController {
             let model = (dataArray.objectAtIndex(indexPath!.row) as! NSDictionary).objectForKey("cloudLive") as! NSDictionary
             let vc = segue.destinationViewController as! ActivityViewController
             vc.activityId = model.objectForKey("activityId") as! String
+            vc.title = model.objectForKey("activityName") as! String
         }
     }
 }

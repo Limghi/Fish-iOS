@@ -21,8 +21,6 @@ class MainTabController: RefreshViewController_Table, ImagePlayerViewDelegate, S
     var segmentArray = NSMutableArray()
     var apiAdsPath =  domain + "api/Ads/Events"
     
-    var cvc : CaptureStreamingViewController!
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,6 +47,8 @@ class MainTabController: RefreshViewController_Table, ImagePlayerViewDelegate, S
         super.viewDidLoad()
         adsPlayer.imagePlayerViewDelegate  = self
         setUserButton()
+        //setLiveButton()
+
         
         if typeSegment == nil
         {

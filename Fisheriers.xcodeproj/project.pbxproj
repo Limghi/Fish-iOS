@@ -19,7 +19,6 @@
 		0B292C171C935EB000B481D5 /* LCInfoResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B292C041C935EB000B481D5 /* LCInfoResource.bundle */; };
 		0B292C181C935EB000B481D5 /* LCPlayerResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B292C051C935EB000B481D5 /* LCPlayerResource.bundle */; };
 		0B292C191C935EB000B481D5 /* libLECPlayerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B292C061C935EB000B481D5 /* libLECPlayerSDK.a */; };
-		0B292C2C1C935FC000B481D5 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B292C2A1C935FC000B481D5 /* libstdc++.tbd */; };
 		0B30932D1C93D74A000AB74D /* LiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B30932C1C93D74A000AB74D /* LiveTableViewController.swift */; };
 		0B30932F1C93D803000AB74D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B30932E1C93D803000AB74D /* ActivityViewController.swift */; };
 		0B3595681C9D9A44000A9782 /* SMSegmentView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3595671C9D9A44000A9782 /* SMSegmentView.framework */; };
@@ -72,15 +71,16 @@
 		0BCB3DF11C889E04006A9F37 /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB3DF01C889E04006A9F37 /* OrdersTableViewController.swift */; };
 		0BF41EA41C94642700E68918 /* LiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF41EA31C94642700E68918 /* LiveCell.swift */; };
 		AADE245286F1284848E24D65 /* Pods_Fisheriers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F22E3C97DCE8C3E32FC74A /* Pods_Fisheriers.framework */; };
+		FC23DB991CDA2D8C00BB4FFD /* librtmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC23DB981CDA2D8C00BB4FFD /* librtmp.a */; };
+		FC23DB9A1CDA2FEE00BB4FFD /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B631CD5063B0078C189 /* libAFNetworking.a */; };
 		FC5D13A01CD35D84001899C5 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D139F1CD35D84001899C5 /* QRViewController.swift */; };
 		FC5D13A21CD35EDA001899C5 /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5D13A11CD35EDA001899C5 /* QRCode.framework */; };
 		FC8EF2D61CAEFF65003FBFCB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8EF2D51CAEFF65003FBFCB /* IntroViewController.swift */; };
 		FC8EF2D81CAF0297003FBFCB /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8EF2D71CAF0297003FBFCB /* Intro.storyboard */; };
-		FCC3FA0B1CD5E5E700DD5CA2 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B351CD4FAEF0078C189 /* libAFNetworking.a */; };
+		FCC3FA0D1CD7BA4700DD5CA2 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3FA0C1CD7BA4600DD5CA2 /* EventCell.swift */; };
 		FCDA4B2E1CD4FAA80078C189 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B2D1CD4FAA80078C189 /* AVFoundation.framework */; };
 		FCDA4B301CD4FAAC0078C189 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B2F1CD4FAAC0078C189 /* AVKit.framework */; };
 		FCDA4B341CD4FAC90078C189 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B331CD4FAC90078C189 /* libiconv.2.4.0.tbd */; };
-		FCDA4B371CD4FB400078C189 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B2B1CD4F9AF0078C189 /* libcrypto.a */; };
 		FCDA4B381CD4FB980078C189 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7057A71C93549500E17910 /* libstdc++.6.0.9.tbd */; };
 		FCDA4B4B1CD4FCB20078C189 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B3B1CD4FCB20078C189 /* libavcodec.a */; };
 		FCDA4B4C1CD4FCB20078C189 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B3C1CD4FCB20078C189 /* libavformat.a */; };
@@ -100,7 +100,6 @@
 		FCDA4B5E1CD501F30078C189 /* LCStreamingBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCDA4B5D1CD501F30078C189 /* LCStreamingBundle.bundle */; };
 		FCDA4B601CD502D80078C189 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B5F1CD502D80078C189 /* libbz2.1.0.tbd */; };
 		FCDA4B621CD504420078C189 /* libLeCloudStreaming.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B611CD504420078C189 /* libLeCloudStreaming.a */; };
-		FCDA4B641CD5063B0078C189 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDA4B631CD5063B0078C189 /* libAFNetworking.a */; };
 		FCE83ED61CB62D8B002E7532 /* RefreshViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE83ED51CB62D8A002E7532 /* RefreshViewController+Table.swift */; };
 		FCE83ED81CB62E84002E7532 /* MainTabContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE83ED71CB62E84002E7532 /* MainTabContentViewController.swift */; };
 		FCE83EDA1CB7CC80002E7532 /* HMSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE83ED91CB7CC80002E7532 /* HMSegmentedControl.framework */; };
@@ -226,10 +225,12 @@
 		326125673BDB6A32A98C92C0 /* Pods-Fisheriers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fisheriers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fisheriers/Pods-Fisheriers.release.xcconfig"; sourceTree = "<group>"; };
 		405805D6D43B0EAD8517471C /* Pods-Fisheriers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fisheriers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fisheriers/Pods-Fisheriers.debug.xcconfig"; sourceTree = "<group>"; };
 		C1F22E3C97DCE8C3E32FC74A /* Pods_Fisheriers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fisheriers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC23DB981CDA2D8C00BB4FFD /* librtmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtmp.a; sourceTree = "<group>"; };
 		FC5D139F1CD35D84001899C5 /* QRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		FC5D13A11CD35EDA001899C5 /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = "../../../Library/Developer/Xcode/DerivedData/Fisheriers-fulvmqhapviqiqabrcnuwiekzosl/Build/Products/Debug-iphonesimulator/QRCode.framework"; sourceTree = "<group>"; };
 		FC8EF2D51CAEFF65003FBFCB /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		FC8EF2D71CAF0297003FBFCB /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		FCC3FA0C1CD7BA4600DD5CA2 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = Views/EventCell.swift; sourceTree = "<group>"; };
 		FCDA4B2B1CD4F9AF0078C189 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Fisheriers/LECPlayer/Libs/libcrypto.a; sourceTree = "<group>"; };
 		FCDA4B2D1CD4FAA80078C189 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FCDA4B2F1CD4FAAC0078C189 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -271,60 +272,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC23DB9A1CDA2FEE00BB4FFD /* libAFNetworking.a in Frameworks */,
+				FCDA4B4B1CD4FCB20078C189 /* libavcodec.a in Frameworks */,
+				FCDA4B4C1CD4FCB20078C189 /* libavformat.a in Frameworks */,
+				FCDA4B4D1CD4FCB20078C189 /* libavresample.a in Frameworks */,
+				FCDA4B4E1CD4FCB20078C189 /* libavutil.a in Frameworks */,
+				FCDA4B4F1CD4FCB20078C189 /* libboost.a in Frameworks */,
+				FCDA4B501CD4FCB20078C189 /* libcde-sdk.a in Frameworks */,
+				FCDA4B511CD4FCB20078C189 /* libcrypto.a in Frameworks */,
+				FCDA4B521CD4FCB20078C189 /* libcurl.a in Frameworks */,
+				FCDA4B531CD4FCB20078C189 /* libglog.a in Frameworks */,
+				FCDA4B541CD4FCB20078C189 /* libReachbility.a in Frameworks */,
+				FC23DB991CDA2D8C00BB4FFD /* librtmp.a in Frameworks */,
+				FCDA4B551CD4FCB20078C189 /* libssl.a in Frameworks */,
+				FCDA4B561CD4FCB20078C189 /* libswresample.a in Frameworks */,
+				FCDA4B571CD4FCB20078C189 /* libswscale.a in Frameworks */,
+				FCDA4B581CD4FCB20078C189 /* libZipArchive.a in Frameworks */,
+				FCDA4B591CD4FCB20078C189 /* zlib.a in Frameworks */,
+				0B292C191C935EB000B481D5 /* libLECPlayerSDK.a in Frameworks */,
+				FCDA4B621CD504420078C189 /* libLeCloudStreaming.a in Frameworks */,
 				FCDA4B601CD502D80078C189 /* libbz2.1.0.tbd in Frameworks */,
 				FCDA4B381CD4FB980078C189 /* libstdc++.6.0.9.tbd in Frameworks */,
-				FCC3FA0B1CD5E5E700DD5CA2 /* libAFNetworking.a in Frameworks */,
-				FCDA4B641CD5063B0078C189 /* libAFNetworking.a in Frameworks */,
-				0B292C2C1C935FC000B481D5 /* libstdc++.tbd in Frameworks */,
-				FCDA4B551CD4FCB20078C189 /* libssl.a in Frameworks */,
-				FCDA4B371CD4FB400078C189 /* libcrypto.a in Frameworks */,
-				FCDA4B521CD4FCB20078C189 /* libcurl.a in Frameworks */,
 				FCDA4B341CD4FAC90078C189 /* libiconv.2.4.0.tbd in Frameworks */,
+				0B7057B11C93549500E17910 /* libiconv.tbd in Frameworks */,
+				0B7057B31C93549500E17910 /* libxml2.2.tbd in Frameworks */,
+				0B7057B41C93549500E17910 /* libz.1.2.5.tbd in Frameworks */,
+				0B7057AD1C93549500E17910 /* AdSupport.framework in Frameworks */,
 				FCDA4B301CD4FAAC0078C189 /* AVKit.framework in Frameworks */,
 				FCDA4B2E1CD4FAA80078C189 /* AVFoundation.framework in Frameworks */,
-				FC5D13A21CD35EDA001899C5 /* QRCode.framework in Frameworks */,
-				FCE83EDC1CB7CC87002E7532 /* ZWIntroductionViewController.framework in Frameworks */,
-				FCE83EDA1CB7CC80002E7532 /* HMSegmentedControl.framework in Frameworks */,
-				FCEE264D1CA6AD6C0057CF25 /* JTCalendar.framework in Frameworks */,
-				0B3595681C9D9A44000A9782 /* SMSegmentView.framework in Frameworks */,
-				FCDA4B541CD4FCB20078C189 /* libReachbility.a in Frameworks */,
 				0B705B3A1C935A2200E17910 /* MediaPlayer.framework in Frameworks */,
-				FCDA4B4B1CD4FCB20078C189 /* libavcodec.a in Frameworks */,
 				0B705B381C935A1900E17910 /* CoreData.framework in Frameworks */,
 				0B705B361C935A0F00E17910 /* CoreTelephony.framework in Frameworks */,
 				0B705B341C935A0600E17910 /* JavaScriptCore.framework in Frameworks */,
-				0B7057AD1C93549500E17910 /* AdSupport.framework in Frameworks */,
-				FCDA4B561CD4FCB20078C189 /* libswresample.a in Frameworks */,
 				0B7057AE1C93549500E17910 /* AudioToolbox.framework in Frameworks */,
 				0B7057AF1C93549500E17910 /* CoreLocation.framework in Frameworks */,
 				0B7057B01C93549500E17910 /* CoreMedia.framework in Frameworks */,
-				0B7057B11C93549500E17910 /* libiconv.tbd in Frameworks */,
-				0B7057B31C93549500E17910 /* libxml2.2.tbd in Frameworks */,
-				0B292C191C935EB000B481D5 /* libLECPlayerSDK.a in Frameworks */,
-				0B7057B41C93549500E17910 /* libz.1.2.5.tbd in Frameworks */,
-				FCDA4B511CD4FCB20078C189 /* libcrypto.a in Frameworks */,
-				FCDA4B571CD4FCB20078C189 /* libswscale.a in Frameworks */,
 				0B7057B61C93549500E17910 /* SystemConfiguration.framework in Frameworks */,
-				FCDA4B4C1CD4FCB20078C189 /* libavformat.a in Frameworks */,
 				0B7057B71C93549500E17910 /* VideoToolbox.framework in Frameworks */,
+				FC5D13A21CD35EDA001899C5 /* QRCode.framework in Frameworks */,
+				FCEE264D1CA6AD6C0057CF25 /* JTCalendar.framework in Frameworks */,
+				FCE83EDC1CB7CC87002E7532 /* ZWIntroductionViewController.framework in Frameworks */,
+				FCE83EDA1CB7CC80002E7532 /* HMSegmentedControl.framework in Frameworks */,
+				0B3595681C9D9A44000A9782 /* SMSegmentView.framework in Frameworks */,
 				0B1BBF581C8F1EB80023D745 /* MJRefresh.framework in Frameworks */,
-				FCDA4B531CD4FCB20078C189 /* libglog.a in Frameworks */,
 				0B62D59B1C8C7F7E00CA9EE2 /* Alamofire.framework in Frameworks */,
 				0B62D5991C8C716D00CA9EE2 /* ImagePlayerView.framework in Frameworks */,
-				FCDA4B501CD4FCB20078C189 /* libcde-sdk.a in Frameworks */,
-				FCDA4B4D1CD4FCB20078C189 /* libavresample.a in Frameworks */,
 				0BB108251C8B89C10069BD1D /* DownPicker.framework in Frameworks */,
-				FCDA4B4E1CD4FCB20078C189 /* libavutil.a in Frameworks */,
 				0BB108261C8B89C10069BD1D /* FSMediaPicker.framework in Frameworks */,
-				FCDA4B621CD504420078C189 /* libLeCloudStreaming.a in Frameworks */,
 				0BB108271C8B89C10069BD1D /* IQKeyboardManagerSwift.framework in Frameworks */,
-				FCDA4B581CD4FCB20078C189 /* libZipArchive.a in Frameworks */,
 				0BB108281C8B89C10069BD1D /* KVNProgress.framework in Frameworks */,
 				0BB108291C8B89C10069BD1D /* RESideMenu.framework in Frameworks */,
-				FCDA4B591CD4FCB20078C189 /* zlib.a in Frameworks */,
 				0BB1082A1C8B89C10069BD1D /* SDWebImage.framework in Frameworks */,
 				AADE245286F1284848E24D65 /* Pods_Fisheriers.framework in Frameworks */,
-				FCDA4B4F1CD4FCB20078C189 /* libboost.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +482,7 @@
 		0B292C071C935EB000B481D5 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				FC23DB981CDA2D8C00BB4FFD /* librtmp.a */,
 				FCDA4B631CD5063B0078C189 /* libAFNetworking.a */,
 				FCDA4B3B1CD4FCB20078C189 /* libavcodec.a */,
 				FCDA4B3C1CD4FCB20078C189 /* libavformat.a */,
@@ -533,6 +533,7 @@
 				0BB108191C8B1E290069BD1D /* OrderCell.swift */,
 				0BF41EA31C94642700E68918 /* LiveCell.swift */,
 				0BAD26E91C9EF594008BA5A3 /* VideoCell.swift */,
+				FCC3FA0C1CD7BA4600DD5CA2 /* EventCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -674,7 +675,7 @@
 						DevelopmentTeam = U7KXZA33K2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -827,6 +828,7 @@
 				0BAD26EA1C9EF594008BA5A3 /* VideoCell.swift in Sources */,
 				0B90A4F21C9F7F020045717D /* BasicViewController.m in Sources */,
 				FCE83ED81CB62E84002E7532 /* MainTabContentViewController.swift in Sources */,
+				FCC3FA0D1CD7BA4700DD5CA2 /* EventCell.swift in Sources */,
 				0BA7D0D61C7C11E000505DA2 /* FameHallPersonalViewController.swift in Sources */,
 				0BCB3DE31C88780A006A9F37 /* RootViewController.swift in Sources */,
 				FCEE264B1CA6ACDC0057CF25 /* PaymentViewController.swift in Sources */,

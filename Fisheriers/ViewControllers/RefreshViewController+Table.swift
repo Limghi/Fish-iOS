@@ -28,7 +28,7 @@ class RefreshViewController_Table: UIViewController, UITableViewDataSource, UITa
         requestPara.setValue(pageSize, forKey: "pageSize")
         //requestPara.setDictionary(paras)
         let path = apiPath
-        GET(path, parameters: requestPara,
+        GET2(path, parameters: requestPara,
             success: { (data)-> () in
             let array = data as! [AnyObject]
             self.dataArray.addObjectsFromArray(data as! [AnyObject])

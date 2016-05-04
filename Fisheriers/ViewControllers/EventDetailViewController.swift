@@ -56,11 +56,15 @@ class EventDetailViewController: UIViewController {
     
     func checkIsOrdered()
     {
-        GETRaw(domain+"api/Events/isOrdered/\(String(eventModel?.objectForKey("id") as! Int))", parameters: nil) { (data) -> () in
-            let nsdata = data as! NSData
-            let boolString = NSString(data: nsdata, encoding: NSUTF8StringEncoding)
-            self.bookButton.enabled = boolString!.containsString("false")
-        }
+        
+        GET(domain+"api/Events/EventStatu/\(String(eventModel?.objectForKey("id") as! Int))", parameters: nil, success:  { (data) -> () in
+            let dict = data as? NSDictionary
+            let message = dict?.objectForKey("message") as? String
+            let orderable = dict?.objectForKey("isOrderable") as? Bool
+            self.bookButton.enabled = orderable ?? false
+            self.bookButton.setTitle(message, forState: UIControlState.Normal)
+            self.bookButton.setTitle(message, forState: UIControlState.Disabled)
+            })
 
     }
     
@@ -74,6 +78,11 @@ class EventDetailViewController: UIViewController {
         if token != ""
         {
             checkIsOrdered()
+        }
+        else
+        {
+            self.bookButton.enabled = true
+            self.bookButton.setTitle("登陆", forState: UIControlState.Normal)
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (UIAlertAction) -> Void in
