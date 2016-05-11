@@ -20,9 +20,9 @@ class ActivityViewController: UIViewController, LCPlayerControlDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityId="A201604250000120"
-        addWebPlayer()
-        //addPlayer()
+        //activityId="A201604250000120"
+        //addWebPlayer()
+        addPlayer()
     }
     
     func addWebPlayer()
