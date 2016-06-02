@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SDWebImage
+import CWPopup
 
 extension UITableView{
     func reloadData(completion:()->())
@@ -52,15 +53,42 @@ extension UIViewController
     func liveButtonClicked()
     {
         let bundle = NSBundle(URL: NSBundle.mainBundle().URLForResource("LCStreamingBundle" , withExtension: "bundle")!)
-        let vc = CaptureStreamingViewController(nibName: "CaptureStreamingViewController", bundle: bundle, title: nil, activityId: "A20160502000025w", userId: "823100", secretKey: "2e44b05a1d3b751efc6a3a3eb1654e79", orientation: CaptureStreamingViewControllerOrientation.Portrait)
+        let vc = CaptureStreamingViewController(nibName: "CaptureStreamingViewController", bundle: bundle, title: nil, activityId: "A20160515000002n", userId: "823100", secretKey: "2e44b05a1d3b751efc6a3a3eb1654e79", orientation: CaptureStreamingViewControllerOrientation.Landscape)
         presentViewController(vc, animated: true, completion: nil)
         //navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setWeatherButton()
+    {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "button_weather01"), landscapeImagePhone: UIImage(named: "button_weather01"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.weatherButtonClicked))
+        self.navigationController?.navigationBar.tintColor = UIColor.darkGrayColor()
+        //self.navigationController?.navigationBar.backItem?.rightBarButtonItem = UIBarButtonItem()
+    }
+    
+    func weatherButtonClicked()
+    {
+        let root = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RootTabVC") as! RootTabBarController
+        //root.disable()
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WeatherViewController") as! WeatherViewController
+        tabBarController?.tabBar.items?.forEach({ (i) in
+            i.enabled = false
+        })
+        vc.parentTabBarController = tabBarController
+        presentViewController(vc, animated: true, completion: nil)
+       
+//        useBlurForPopup = true
+
+//        vc.view.frame.size.width = 200
+//        vc.view.frame.size.height = 300
+//        presentPopupViewController(vc,animated:true,completion:nil)
+        
     }
 }
 
 extension UIImageView
 {
-    func setBasicImage(var path : String?)
+    func setBasicImage(path : String?)
     {
         if path == nil
         {
@@ -68,13 +96,13 @@ extension UIImageView
         }
         else
         {
-            path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
-            let url = NSURL(string:(domain +  path!))
+            let _path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
+            let url = NSURL(string:(domain +  _path!))
             self.sd_setImageWithURL(url, placeholderImage : defaultBasicImage)
         }
     }
     
-    func setHeaderImage(var path : String?)
+    func setHeaderImage(path : String?)
     {
         if path == nil
         {
@@ -82,13 +110,13 @@ extension UIImageView
         }
         else
         {
-            path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
-            let url = NSURL(string: domain +  path!)
+            let _path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
+            let url = NSURL(string:(domain +  _path!))
             self.sd_setImageWithURL(url, placeholderImage : defaultAvatarImage)
         }
     }
     
-    func setAdImage(var path : String?)
+    func setAdImage(path : String?)
     {
         self.contentMode = UIViewContentMode.ScaleAspectFill
         self.layer.masksToBounds = true
@@ -98,13 +126,13 @@ extension UIImageView
         }
         else
         {
-            path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
-            let url = NSURL(string: domain +  path!)
+            let _path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
+            let url = NSURL(string:(domain +  _path!))
             self.sd_setImageWithURL(url, placeholderImage : UIImage(named:"th.jpeg"))
         }
     }
     
-    func resetUserImage(var path : String?, done: ()->())
+    func resetUserImage(path : String?, done: ()->())
     {
         self.layer.masksToBounds = true
         if path == nil
@@ -114,9 +142,8 @@ extension UIImageView
         else
         {
             
-            path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
-            path = path?.stringByReplacingOccurrencesOfString("~", withString: "")
-            let url = NSURL(string: domain +  path!)
+            let _path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/").stringByReplacingOccurrencesOfString("~", withString: "")
+            let url = NSURL(string:(domain +  _path!))
             SDImageCache.sharedImageCache().removeImageForKey(url?.absoluteString, fromDisk:true)
             self.sd_setImageWithURL(url, placeholderImage: UIImage(named:"Hall-of-fame-avatar01"), completed: { (_image, _error, _type, _url) in
                 done()
@@ -125,7 +152,7 @@ extension UIImageView
         }
     }
     
-    func setUserImage(var path : String?)
+    func setUserImage(path : String?)
     {
         self.layer.masksToBounds = true
         if path == nil
@@ -135,10 +162,8 @@ extension UIImageView
         else
         {
             
-            path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/")
-            path = path?.stringByReplacingOccurrencesOfString("~", withString: "")
-            let url = NSURL(string: domain +  path!)
-            
+            let _path = path?.stringByReplacingOccurrencesOfString("\\", withString: "/").stringByReplacingOccurrencesOfString("~", withString: "")
+            let url = NSURL(string:(domain +  _path!))
             self.sd_setImageWithURL(url, placeholderImage : UIImage(named:"Hall-of-fame-avatar01"))
         }
     }

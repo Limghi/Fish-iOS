@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 import ImagePlayerView
 import MJRefresh
 import DownPicker

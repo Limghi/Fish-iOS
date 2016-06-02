@@ -62,7 +62,11 @@ typedef NS_ENUM(NSInteger, LCCamareOrientationState)
 /// vidoeSize 设置视频的大小（下次推流时生效）
 @property (nonatomic,assign) CGSize videoSize;
 
-//音量增益，大于0；未初始化时返回-1
+/*!
+ 音量增益，大于0；未初始化时返回-1
+ 增益需要在LCStreamingManager初始化完成之后再设置
+ 可以选择在connectionStatusChanged回调的LCStreamingSessionStateStarted状态来设置
+ */
 @property (nonatomic, assign) CGFloat gain;
 
 //对焦(0,0) is top-left, (1,1) is bottom-right

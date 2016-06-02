@@ -8,7 +8,6 @@
 import KVNProgress
 import UIKit
 import FSMediaPicker
-import AFNetworking
 import SDWebImage
 class UserViewController: UITableViewController, FSMediaPickerDelegate {
 
@@ -24,6 +23,9 @@ class UserViewController: UITableViewController, FSMediaPickerDelegate {
     @IBOutlet weak var avatarView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    @IBAction func liveButtonClicked(sender: AnyObject) {
+        liveButtonClicked()
     }
     
     func setContent()
@@ -46,10 +48,10 @@ class UserViewController: UITableViewController, FSMediaPickerDelegate {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        setContent()
-    }
+    //override func viewDidAppear(animated: Bool) {
+        //super.viewDidAppear(animated)
+        //setContent()
+    //}
     
     func showPicker()
     {
@@ -62,10 +64,10 @@ class UserViewController: UITableViewController, FSMediaPickerDelegate {
     
     func mediaPicker(mediaPicker: FSMediaPicker!, didFinishWithMediaInfo mediaInfo: [NSObject : AnyObject]!) {
         let img = mediaInfo[UIImagePickerControllerCircularEditedImage] as! UIImage
-        updateAvatar(img) { () -> () in
+        UpdateAvatar(img) { () -> () in
             KVNProgress.show()
             //self.avatarView.image = img
-            GetUserInfo2({
+            GetUserInfo({
                 let avatarPath = (userDict.objectForKey("avatar") as? String) ?? ""
                 self.avatarView.resetUserImage(avatarPath){ _ in  KVNProgress.dismiss()}
             })
@@ -75,7 +77,26 @@ class UserViewController: UITableViewController, FSMediaPickerDelegate {
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "Logout"
         {
-                        return false
+            return false
+            
+        }
+        if identifier == "Live" || identifier == "Live2"
+        {
+            return true
+            if (userDict.objectForKey("liveId") as? Int) == nil
+            {
+                return true
+            }
+            else
+            {
+                
+                let live = userDict.objectForKey("live")
+                let activityId = live?.objectForKey("cloudLiveId") as! String
+                let bundle = NSBundle(URL: NSBundle.mainBundle().URLForResource("LCStreamingBundle" , withExtension: "bundle")!)
+                let vc = CaptureStreamingViewController(nibName: "CaptureStreamingViewController", bundle: bundle, title: nil, activityId: activityId, userId: "823100", secretKey: "2e44b05a1d3b751efc6a3a3eb1654e79", orientation: CaptureStreamingViewControllerOrientation.Landscape)
+                self.presentViewController(vc, animated: true, completion: nil)
+                return false
+            }
             
         }
         return true	
@@ -99,6 +120,7 @@ class UserViewController: UITableViewController, FSMediaPickerDelegate {
             let vc = segue.destinationViewController as! ChangeUsernameViewController
         }
     }
+    
     
         
 

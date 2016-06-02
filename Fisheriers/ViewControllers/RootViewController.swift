@@ -13,9 +13,11 @@ class RootViewController: RESideMenu,RESideMenuDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib();
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        contentViewController =  sb.instantiateViewControllerWithIdentifier("RootTabVC")
-        leftMenuViewController = sb.instantiateViewControllerWithIdentifier("UserVC")
+        delegate = self
+        let mainsb = UIStoryboard(name: "Main", bundle: nil)
+        contentViewController =  mainsb.instantiateViewControllerWithIdentifier("RootTabVC")
+        let usersb = UIStoryboard(name: "User", bundle: nil)
+        leftMenuViewController = usersb.instantiateViewControllerWithIdentifier("UserVC")
         scaleMenuView = false
         scaleContentView = false
         scaleBackgroundImageView = false
@@ -36,6 +38,10 @@ class RootViewController: RESideMenu,RESideMenuDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func sideMenu(sideMenu: RESideMenu!, didShowMenuViewController menuViewController: UIViewController!) {
+        (leftMenuViewController as! UserViewController).setContent()
     }
     
 

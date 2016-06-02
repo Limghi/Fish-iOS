@@ -1,9 +1,17 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## AFNetworking
+## AVOSCloud
 
-Copyright (c) 2011–2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright 2015 LeanCloud, Inc. See https://leancloud.cn/terms.html
+
+## AVOSCloudIM
+
+Copyright 2015 LeanCloud, Inc. See https://leancloud.cn/terms.html
+
+## Alamofire
+
+Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +32,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## Alamofire
+## CWPopup
 
-Copyright (c) 2014–2016 Alamofire Software Foundation (http://alamofire.org/)
+The MIT License (MIT)
+
+Copyright (c) 2013 Cezary Wojcik <http://www.cezarywojcik.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -295,7 +305,7 @@ THE SOFTWARE.
 
 ## SDWebImage
 
-Copyright (c) 2009 Olivier Poitrey <rs@dailymotion.com>
+Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         paras.setValue(PhoneTF.text , forKey: "username")
         paras.setValue(PasswordTF.text, forKey: "password")
         paras.setValue("password", forKey: "grant_type")
-        SignIn2(path, parameters: paras) { (dict) -> () in
+        SignIn(path, parameters: paras) { (dict) -> () in
             savePhoneNumberAndPassword(self.PhoneTF.text!, password: self.PasswordTF.text!)
             self.dismissViewControllerAnimated(true,completion: nil)
             //self.Verified = true

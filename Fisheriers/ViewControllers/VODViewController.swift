@@ -7,21 +7,29 @@
 //
 
 
-
-class VODViewController: UIViewController, LCPlayerControlDelegate {
+//, LCPlayerControlDelegate
+class VODViewController: UIViewController{
     
     var vuid = ""
-    var control :LCPlayerViewControl!
-    var playerView : UIView!
-    
+    var uuid = "nal4hqaahb"
+    //var control :LCPlayerViewControl!
+    //var playerView : UIView!
+        @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPlayer()
+        let url = "http://yuntv.letv.com/bcloud.html?uu=\(uuid)&vu=\(vuid)&pu=1ade94a321&auto_play=1&gpcflag=1&width=1280&height=960"
+        webView.loadRequest(NSURLRequest(URL: NSURL(string:url)!))
+        //addPlayer()
 
     }
     
+    func creatHtml()
+    {
+        //let data =
+    }
     
     
+    /*
     func addPlayer()
     {
         control = LCPlayerViewControl()
@@ -98,7 +106,7 @@ class VODViewController: UIViewController, LCPlayerControlDelegate {
         control.destroyPlayer()
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier:identifier)
     }
-    
+    */
     
     
 }

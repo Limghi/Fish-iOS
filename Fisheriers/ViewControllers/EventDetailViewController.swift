@@ -5,7 +5,7 @@
 //  Created by Lost on 23/02/2016.
 //  Copyright © 2016 Feng. All rights reserved.
 //
-
+import KVNProgress
 import UIKit
 import MapKit
 
@@ -44,10 +44,50 @@ class EventDetailViewController: UIViewController {
     var confirmVC : UIAlertController!
     
     
+    @IBOutlet weak var followButton: UIButton!
+    @IBAction func followButtonClicked(sender:AnyObject)
+    {
+        if token == ""
+        {
+            presentViewController(UIStoryboard(name:"Login",bundle: nil).instantiateInitialViewController()!, animated: true, completion: nil)
+        }
+        else
+        {
+            
+            let shop = eventModel?.objectForKey("shop") as? NSDictionary
+            let shopId = shop?.objectForKey("id") as! Int
+         	
+            if followButton.selected
+            {
+                let path = domain + "api/Shops/Unfollow/\(shopId)"
+                POST(path, parameters: nil, success: { (o) in
+                    KVNProgress.showWithStatus("取消关注")
+                    self.followButton.selected = !self.followButton.selected
+                    let _shop = getShopFromFollowed(shopId)
+                    if _shop != nil
+                    {
+                        followShops.removeObject(_shop!)
+                    }
+                })
+            }
+            else
+            {
+                let path = domain + "api/Shops/Follow/\(shopId)"
+                POST(path, parameters: nil, success: { (o) in
+                    KVNProgress.showWithStatus("关注成功")
+                    self.followButton.selected = !self.followButton.selected
+                    followShops.addObject(shop!)
+                })
+            }
+        }
+    }
+    
+
+    
     func createOrder()
     {
       
-        POST2(domain+"api/Orders/CreateOrder/\(String(eventModel?.objectForKey("id") as! Int))", parameters: nil) { (data) -> () in
+        POST(domain+"api/Orders/CreateOrder/\(String(eventModel?.objectForKey("id") as! Int))", parameters: nil) { (data) -> () in
             self.createdOrderId = (data as! NSDictionary).objectForKey("id") as! Int
             self.confirmBooking = true
             self.performSegueWithIdentifier("CreateOrder", sender: self)
@@ -78,6 +118,7 @@ class EventDetailViewController: UIViewController {
         if token != ""
         {
             checkIsOrdered()
+            
         }
         else
         {
@@ -99,6 +140,8 @@ class EventDetailViewController: UIViewController {
         confirmVC.addAction(okAction)
 
         show()
+        
+        
     }
     
     
@@ -144,6 +187,9 @@ class EventDetailViewController: UIViewController {
         introLabel.text = intro
         avatarView.setHeaderImage(eventModel?.objectForKey("avatarUrl") as? String)
         addressLabel.text = shop?.objectForKey("address") as? String
+        
+        let shopId = shop?.objectForKey("id") as! Int
+        followButton.selected =  getShopFromFollowed(shopId) != nil
 
     }
     

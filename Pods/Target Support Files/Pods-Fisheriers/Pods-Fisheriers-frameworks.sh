@@ -84,8 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Fisheriers/AFNetworking.framework"
   install_framework "Pods-Fisheriers/Alamofire.framework"
+  install_framework "Pods-Fisheriers/CWPopup.framework"
   install_framework "Pods-Fisheriers/DownPicker.framework"
   install_framework "Pods-Fisheriers/FSMediaPicker.framework"
   install_framework "Pods-Fisheriers/HMSegmentedControl.framework"
@@ -101,8 +101,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Fisheriers/ZWIntroductionViewController.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Fisheriers/AFNetworking.framework"
   install_framework "Pods-Fisheriers/Alamofire.framework"
+  install_framework "Pods-Fisheriers/CWPopup.framework"
   install_framework "Pods-Fisheriers/DownPicker.framework"
   install_framework "Pods-Fisheriers/FSMediaPicker.framework"
   install_framework "Pods-Fisheriers/HMSegmentedControl.framework"

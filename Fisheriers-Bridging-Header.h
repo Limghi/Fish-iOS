@@ -10,12 +10,14 @@
 
 #import "CaptureStreamingViewController.h"
 #import "LCStreamingManager.h"
-#import "LECPlayer.h"
-#import "LCActivityPlayerViewControl.h"
-#import "LCPlayerService.h"
-#import "LCPlayerControl.h"
-#import "LCPlayerViewControl.h"
+//#import "LECPlayer.h"
+//#import "LCActivityPlayerViewControl.h"
+//#import "LCPlayerService.h"
+//#import "LCPlayerControl.h"
+//#import "LCPlayerViewControl.h"
 #import "Pingpp.h"
 #import "BasicViewController.h"
-
+#import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudIM/AVOSCloudIM.h>
 #import <SMS_SDK/SMSSDK.h>
+#import "ChatRoomViewController.h"

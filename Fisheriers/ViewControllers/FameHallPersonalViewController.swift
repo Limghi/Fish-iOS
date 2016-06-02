@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AFNetworking
+
 
 class FameHallPersonalViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     

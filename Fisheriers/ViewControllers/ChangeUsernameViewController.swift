@@ -35,7 +35,7 @@ class ChangeUsernameViewController: UIViewController {
     func changename()
     {
         let path = domain + "api/Account/ChangeUsername?username=" + usernameTF.text!
-        POST2(path,parameters:nil,success: {(dict)->() in
+        POST(path,parameters:nil,success: {(dict)->() in
             self.isChanged = true
             userDict.setValue(self.usernameTF.text, forKey: "userName")
             self.performSegueWithIdentifier("ChnageUsername", sender: self)

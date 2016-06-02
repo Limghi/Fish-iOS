@@ -141,10 +141,17 @@ class LiveTableViewController: MainTabController {
         if segue.destinationViewController.isKindOfClass(ActivityViewController)
         {
             let indexPath = tableView.indexPathForSelectedRow
-            let model = (dataArray.objectAtIndex(indexPath!.row) as! NSDictionary).objectForKey("cloudLive") as! NSDictionary
+            let model = dataArray.objectAtIndex(indexPath!.row) as! NSDictionary
             let vc = segue.destinationViewController as! ActivityViewController
-            vc.activityId = model.objectForKey("activityId") as! String
-            vc.title = model.objectForKey("activityName") as! String
+            vc.model = model
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        return true
+        let indexPath = tableView.indexPathForSelectedRow
+        let model = (dataArray.objectAtIndex(indexPath!.row) as! NSDictionary).objectForKey("cloudLive") as! NSDictionary
+        let state = model.objectForKey("activityStatus") as! Int
+        return state == 1
     }
 }

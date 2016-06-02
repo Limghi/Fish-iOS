@@ -13,44 +13,8 @@ import RESideMenu
 import SDWebImage
 import ZWIntroductionViewController
 
-/*
-Keys for segment properties
-*/
-
-// This is mainly for the top/bottom margin of the imageView
-let keyContentVerticalMargin = "VerticalMargin"
-
-// The colour when the segment is under selected/unselected
-let keySegmentOnSelectionColour = "OnSelectionBackgroundColour"
-let keySegmentOffSelectionColour = "OffSelectionBackgroundColour"
-
-// The colour of the text in the segment for the segment is under selected/unselected
-let keySegmentOnSelectionTextColour = "OnSelectionTextColour"
-let keySegmentOffSelectionTextColour = "OffSelectionTextColour"
-
-// The font of the text in the segment
-let keySegmentTitleFont = "TitleFont"
 
 
-let domain = "http://123.56.207.193/"
-let ColorBG = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
-let ColorGreen = UIColor(red: 54/255, green: 207/255, blue: 160/255, alpha: 1)
-let ColorOrange = UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1)
-let ColorGray = UIColor(red: 92/255, green: 92/255, blue: 92/255, alpha: 1)
-let ColorLightGray = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1)
-let defaultBasicImage = UIImage(named: "news-picture")
-let defaultAvatarImage = UIImage(named: "Hall-of-fame-avatar01")
-
-//let baiduMap = BMKMapManager()
-
-let serverDateFormatter = NSDateFormatter()
-let clientDateFormatter = NSDateFormatter()
-let lcDateDateFormatter = NSDateFormatter()
-let simpleDateFormatter = NSDateFormatter()
-let serverShortDateFormatter = NSDateFormatter()
-
-let lcUUID = "nal4hqaahb"
-var userDict = NSMutableDictionary()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -79,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITableViewCell.appearance().layoutMargins = UIEdgeInsetsZero
         UITableViewCell.appearance().preservesSuperviewLayoutMargins = false
     
-        LCPlayerService.sharedService().startService()
+        //LCPlayerService.sharedService().startService()
         //UITabBarItem.appearance().imageInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         //UINavigationBar.appearance().backItem?.backBarButtonItem?.
         //UINavigationBar.appearance().backItem?.leftBarButtonItem?.tintColor = ColorOrange
@@ -101,8 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SMSSDK.registerApp("10141f2a0a77c",withSecret:"e9d0487f02a44d28b842aaaf54bbe24f")
         //AMapNaviServices.sharedServices().apiKey = "45c53fa9745a758df0864dff33027ae3"
         //MAMapServices.sharedServices().apiKey = "45c53fa9745a758df0864dff33027ae3"
+             
+        AVOSCloud.setApplicationId(leanAppId, clientKey: leanAppKey)
+        #if DEBUG
+            Pingpp.setDebugMode(true)
+            AVAnalytics.setAnalyticsEnabled(false)
+            AVOSCloud.setVerbosePolicy(kAVVerboseShow)
+            AVLogger.addLoggerDomain(AVLoggerDomainIM)
+            AVLogger.addLoggerDomain(AVLoggerDomainCURL)
+            AVLogger.setLoggerLevelMask(AVLoggerLevelAll)
+        #endif
+
         
-        Pingpp.setDebugMode(true)
         
         autoLogin()
                
@@ -154,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             paras.setValue(phone , forKey: "username")
             paras.setValue(phone, forKey: "password")
             paras.setValue("password", forKey: "grant_type")
-            SignIn2(path, parameters: paras) { (dict) -> () in
+            SignIn(path, parameters: paras) { (dict) -> () in
                 savePhoneNumberAndPassword(phone!, password: password!)
             }
         }

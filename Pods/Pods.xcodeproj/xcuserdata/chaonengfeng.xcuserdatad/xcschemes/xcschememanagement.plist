@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AFNetworking.xcscheme</key>
+		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Alamofire.xcscheme</key>
+		<key>CWPopup.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -102,17 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0751FE942C342481AD5C6F32F714C58B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
+		<key>18D0433FA5D021CC2BD5C762689BAF2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>307DC8692053A2F2139A70046D9C9620</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43CE485086F89A827D16FE66415F7783</key>
+		<key>6847254D016329D4A531D34ED2B6DF81</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6847254D016329D4A531D34ED2B6DF81</key>
+		<key>6AB2C589B25AEAD06B941791A4594A43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,12 +142,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86495F7E6575662B57D92AEF7FFCB1B8</key>
+		<key>8B8A939BA178436BA6133118D9AE2A27</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9DF756F7321BD430154021D5DF35360D</key>
+		<key>9F263C940743FF1E8E43A30247AC57FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A54264C75913CBF4652690E391A68CCB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,12 +172,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9028DE3DF5BDB98414F5A9D79CF4E67</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D1C2A2FCD8BEA63AF21E264135F621C9</key>
+		<key>DE7B96CE94DA7FFE219609DAAE67437A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -14,7 +14,7 @@ class RootTabBarController: UITabBarController {
         super.viewDidLoad()
         tabBar.tintColor = ColorGreen
                 
-        //tabBar.frame.height = 44
+        //tabBar.frame.size.height = 0
         //tabBar.layer.masksToBounds = true
         //tabBar.barStyle = .Black
         //tabBar.translucent = false
@@ -33,13 +33,26 @@ class RootTabBarController: UITabBarController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //setUserButton()
-
-        tabBar.items?.forEach({ (item) -> () in
-                   })
     }
     
     override func shouldAutorotate() -> Bool {
         return false
+    }
+    
+    func disable()
+    {
+        tabBar.hidden = true
+        tabBar.items?.forEach({ (i) in
+            i.enabled = false
+        })
+    }
+    
+    func enable()
+    {
+        tabBar.hidden = false
+        tabBar.items?.forEach({ (i) in
+            i.enabled = true
+        })
     }
 
     /*

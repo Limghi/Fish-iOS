@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 import ImagePlayerView
 import MJRefresh
 import SMSegmentView
@@ -33,7 +32,7 @@ class BaseTableViewContollerWithAds: UIViewController, UITableViewDataSource, UI
         requestPara.setValue(pageSize, forKey: "pageSize")
         //requestPara.setDictionary(paras)
         let path = apiPath
-        GET2(path, parameters: requestPara, success: { (data)-> () in
+        GET(path, parameters: requestPara, success: { (data)-> () in
             let array = data as! [AnyObject]
             if array.count != 0
             {

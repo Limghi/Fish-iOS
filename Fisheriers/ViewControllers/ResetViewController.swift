@@ -65,7 +65,7 @@ class ResetViewController: UIViewController {
         paras.setValue(CodeTF.text , forKey: "verifyCode")
         paras.setValue(PasswordTF.text, forKey: "password")
         paras.setValue(PasswordConfirmTF.text , forKey: "confirmPassword")
-        POST2(path, parameters: paras) { (data) -> () in
+        POST(path, parameters: paras) { (data) -> () in
             savePhoneNumberAndPassword(self.PhoneTF.text!, password: self.PasswordTF.text!)
             self.login()
         }
@@ -78,7 +78,7 @@ class ResetViewController: UIViewController {
         paras.setValue(PhoneTF.text , forKey: "username")
         paras.setValue(PasswordTF.text, forKey: "password")
         paras.setValue("password", forKey: "grant_type")
-        SignIn2(path, parameters: paras) { (dict) -> () in
+        SignIn(path, parameters: paras) { (dict) -> () in
             self.dismissViewControllerAnimated(true,completion: nil)
             //self.Verified = true
             //self.performSegueWithIdentifier("Register", sender: self)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 import ImagePlayerView
 import MJRefresh
 import SMSegmentView
@@ -47,6 +46,7 @@ class MainTabController: RefreshViewController_Table, ImagePlayerViewDelegate, S
         super.viewDidLoad()
         adsPlayer.imagePlayerViewDelegate  = self
         setUserButton()
+        setWeatherButton()
         //setLiveButton()
 
         

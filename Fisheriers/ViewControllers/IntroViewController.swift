@@ -62,7 +62,7 @@ class IntroViewController: ZWIntroductionViewController {
             paras.setValue(phone, forKey: "username")
             paras.setValue(password, forKey: "password")
             paras.setValue("password", forKey: "grant_type")
-            SignIn2(path, parameters: paras) { (dict) -> () in
+            SignIn(path, parameters: paras) { (dict) -> () in
             }
 
         }

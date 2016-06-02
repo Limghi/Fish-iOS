@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 import ImagePlayerView
 import MJRefresh
 import SMSegmentView
@@ -28,7 +27,7 @@ class RefreshViewController_Table: UIViewController, UITableViewDataSource, UITa
         requestPara.setValue(pageSize, forKey: "pageSize")
         //requestPara.setDictionary(paras)
         let path = apiPath
-        GET2(path, parameters: requestPara,
+        GET(path, parameters: requestPara,
             success: { (data)-> () in
             let array = data as! [AnyObject]
             self.dataArray.addObjectsFromArray(data as! [AnyObject])
@@ -87,7 +86,16 @@ class RefreshViewController_Table: UIViewController, UITableViewDataSource, UITa
    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        tabBarController?.tabBar.items?.forEach({ (i) in
+            i.enabled = true
+        })
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        tabBarController?.tabBar.items?.forEach({ (i) in
+            i.enabled = false
+        })
     }
     
     

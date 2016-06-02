@@ -8,7 +8,6 @@ target 'Fisheriers' do
     pod 'RESideMenu'
     pod 'DownPicker'
     pod 'IQKeyboardManagerSwift'
-    pod 'AFNetworking'
     pod 'SDWebImage'
     pod 'KVNProgress'
     pod 'ImagePlayerView'
@@ -22,6 +21,9 @@ target 'Fisheriers' do
     pod 'ZWIntroductionViewController'
     pod 'HMSegmentedControl'
     pod 'QRCode'
+    pod 'CWPopup'
+    pod 'AVOSCloud'
+    pod 'AVOSCloudIM'
 end
 
 target 'FisheriersTests' do
